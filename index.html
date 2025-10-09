@@ -1,10 +1,178 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>剑客的主页</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="author" content="maicong.me">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="">
+<meta name="application-name" content="">
+<meta name="format-detection" content="telephone=no">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="static/img/apple-touch-icon.png">
+<title>看看小姐姐吧</title>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<style>
+	@charset "UTF-8";
+	a,address,b,big,blockquote,body,center,cite,code,dd,del,div,dl,dt,em,fieldset,font,form,h1,h2,h3,h4,h5,h6,html,i,iframe,img,ins,label,legend,li,ol,p,pre,small,span,strong,u,ul,var,div{margin:0; padding:0; font-family:"微软雅黑"; border:none;}
+	ul,li{list-style:none;}
+	body,html{background:#000;}
+	a{text-decoration:none;}
+	.con-box{
+		height:100vh;
+	}
+	.con-box-top{
+		height:45px;
+		line-height:45px;
+		color:#fff;
+		font-size:14px;
+		width:100%;
+		padding-left:15px;
+		border-bottom:1px solid #eee;
+	}
+	.con-box-top span{
+		color:#f00;
+	}
+	.con-box-video{
+		width: 340px;
+		margin:0 auto;
+		height:60%;
+	}
+	.con-box-title{
+		color: #eee;
+	    font-size: 14px;
+	    line-height: 25px;
+	    padding-left: 15px;
+	    overflow: hidden;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	    margin-top:15px;
+	}
+	.con-box-button{
+	  height: 40px;
+	  line-height: 40px;
+	  color: #fff;
+	  width: 340px;
+	  text-align: center;
+	  background: #07c160;
+	  border-radius: 40px;
+	  margin: 0 auto;
+	  margin-top: 30px;
+	  font-size:18px;
+	}
+	
+	.con-box-game{
+	  width:350px;
+	  margin: 25px auto 25px;
+	  border-radius: 3px;
+	  background: #fff;
+	  padding-top: 15px;
+	  padding-bottom: 8px;
+	}
+	.con-box-game-inner{
+	  width: 96%;
+	  margin: 0 auto;
+	  display: flex;
+	  justify-content: space-between;
+	}
+	.con-box-game-list{
+	
+	}
+	.con-box-game-list-image{
+	  text-align: center;
+	}
+	.con-box-game-list img{
+	  width: 60px;
+	  height: 60px;
+	  border-radius: 50%;
+	}
+	.con-box-game-list-name{
+	  font-size: 14px;
+	  height: 25px;
+	  line-height: 25px;
+	  margin-top: 5px;
+	  color: #333;
+	}
+</style>
 </head>
 <body>
-  <h1>这里没有剑客源码哦~</h1>
+	<div class="con-box">
+		<div class="con-box-top">初夏 <span>别试图破解剑客了 看看小姐姐吧</span></div>
+		<div class="con-box-video">
+			<video style="width:340px;height:100%;" id="video_src" controls loop autoplay>
+			  <source poster="" src="" type="video/mp4">
+			  您的浏览器不支持 HTML5 video 标签。
+			</video>
+		</div>
+		<div class="con-box-title"></div>
+		<div class="con-box-button">换一换</div>
+		
+		<!-- 推荐小程序 -->
+		<div class="con-box-game">
+		    <div class="con-box-game-inner">
+		        
+		    </div>
+		 </div>
+	</div>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+
+		
+	<script>
+		$(function(){
+			$(".con-box-button").click(function(){
+				var mythis = $(this);
+				mythis.css("background","#cccccc").html("加载中");
+				$.post('https://sucai.03023.net/angry_uncle/meinv.php', { 
+		               
+	            }, function(data) {
+	            	mythis.css("background","#07c160").html("换一换");
+	                if (data.status == 200) {
+	                	 $("#video_src").attr("src",data["src"]);
+	                	 $(".con-box-title").html(data["title"]);
+	                } else {
+	                    alert('解析失败：' + data.msg);
+	                }
+	            }, 'json');
+			})
+			$(".con-box-button").click();
+			
+			//
+			$.post('https://sucai.03023.net/xiaojiejie/api.php', { 
+	               
+            }, function(data) {
+            	var game_list = data["list"];
+            	
+            	var html = '';
+            	for(var i=0;i<game_list.length;i++){
+            		html +='<div data-appid="'+game_list[i]['appid']+'" data-path="'+game_list[i]['path']+'" onclick="to_xcx(this)" class="con-box-game-list">';
+            		html +='<div class="con-box-game-list-image"><image src="'+game_list[i]['image']+'"></image></div>';
+            		html +='<div class="con-box-game-list-name">'+game_list[i]['name']+'</div>';
+            		html +='</div>';
+            	}
+            	$(".con-box-game-inner").html(html);
+            }, 'json');
+		})
+		
+		function to_xcx(obj){
+			var appid = $(obj).attr("data-appid");
+			var path = $(obj).attr("data-path");
+			/* // 调用接口
+			wx.miniProgram.navigateTo({
+				appid : appid
+			    //url: `../index/index`,
+			    //或 url: `/pages/index/index`,
+			}); */
+			window.location.href="weixin://dl/business/?appid="+appid+"&path="+path;
+		}
+	</script>
+	
 </body>
 </html>

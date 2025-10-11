@@ -16,6 +16,9 @@
 ]]
     
 
+--你在干嘛
+
+
 if getfenv().ADittoKey then
 
     local Key = getfenv().ADittoKey

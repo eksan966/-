@@ -22,8 +22,7 @@ Title.Size = UDim2.new(1, 0, 0, 30)
 Title.Position = UDim2.new(0, 0, 0, 10)
 Title.BackgroundTransparency = 1
 Title.TextColor3 = Color3.new(0, 0, 0)
-Title.Text = "Sword Guest"
-Title.Font = Enum.Font.JosefinSans  
+Title.Text = "剑客"
 Title.TextSize = 18  
 Title.Parent = Frame
 
@@ -35,8 +34,7 @@ FreeButton.BackgroundColor3 = Color3.new(1, 1, 1)
 FreeButton.BorderSizePixel = 2
 FreeButton.BorderColor3 = Color3.new(0, 0, 0)
 FreeButton.TextColor3 = Color3.new(0, 0, 0)
-FreeButton.Text = "Free"
-FreeButton.Font = Enum.Font.JosefinSans  
+FreeButton.Text = "免费版"
 FreeButton.TextSize = 18  
 FreeButton.Parent = Frame
 
@@ -51,8 +49,7 @@ PremiumButton.BackgroundColor3 = Color3.new(1, 1, 1)
 PremiumButton.BorderSizePixel = 2
 PremiumButton.BorderColor3 = Color3.new(0, 0, 0)
 PremiumButton.TextColor3 = Color3.new(0, 0, 0)
-PremiumButton.Text = "Premium"
-PremiumButton.Font = Enum.Font.JosefinSans  
+PremiumButton.Text = "付费版"
 PremiumButton.TextSize = 18  
 PremiumButton.Parent = Frame
 

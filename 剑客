@@ -90,12 +90,12 @@ end)
 
 
 FreeButton.MouseButton1Click:Connect(function()
-    print("免费版")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Zer0neK/V9/refs/heads/SG/FREE?token=GHSAT0AAAAAADM5PP4K5CYRRNUC32X4ORH62IQH77A"))()
     ScreenGui:Destroy()
 end)
 
 PremiumButton.MouseButton1Click:Connect(function()
-    print("付费版")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Zer0neK/V9/refs/heads/SG/VIP?token=GHSAT0AAAAAADM5PP4L3RSDCWNUD2ZWAZDI2IQIBBQ"))()
     ScreenGui:Destroy()
 end)
 
